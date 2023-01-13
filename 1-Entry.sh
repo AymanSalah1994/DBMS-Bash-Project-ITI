@@ -6,13 +6,19 @@ select option in "->Press 1 To Create a Database" "->Press 2 To List available D
 # PS3="Please Choose a Number: "
 do
 case $option in
-"->Press 1 To Create a Database") echo "First Option"
+1) echo "First Option"
+# "->Press 1 To Create a Database") echo "First Option"
+# 1) echo "First Option"
+# NOTE: Both will Work 
 ;;
-"->Press 2 To List available Databases") echo "Second Option"
+2) echo "Second Option"
+# "->Press 2 To List available Databases") echo "Second Option"
 ;;
-"->Press 3 To Connect to a Database")  echo "Third Option"
+3)  echo "Third Option"
+# "->Press 3 To Connect to a Database"
 ;;
-"->Press 4 To Drop a Database") echo "Fourth Option"
+4) echo "Fourth Option"
+# "->Press 4 To Drop a Database"
 ;;
 *) echo "$REPLY is not Valid ! Only 1,2,3"
 ;;
