@@ -1,9 +1,8 @@
 #!/bin/bash
 echo "Select An option From the Options Below !"
-
+PS3="-~$ "
 # This is the Main Menu that is Neded In the Task 
 select option in "->Press 1 To Create a Database" "->Press 2 To List available Databases" "->Press 3 To Connect to a Database" "->Press 4 To Drop a Database"
-# PS3="Please Choose a Number: "
 do
 case $REPLY in
 1) echo "First Option"
