@@ -6,6 +6,7 @@ select option in "->Press 1 To Create a Database" "->Press 2 To List available D
 do
 case $REPLY in
 1) echo "First Option"
+./2.1.CreateDB.sh
 # "->Press 1 To Create a Database") echo "First Option"
 # 1) echo "First Option"
 # NOTE: Both Above will Work But in Case Use $option and In select also Make it Option
@@ -14,7 +15,7 @@ exit;;
 2) echo "Second Option"
 # echo `./2.2.ListDatabases.sh`
 # If i make it Echo and backTich it makes a Problem 
-././2.2.ListDatabases.sh
+./2.2.ListDatabases.sh
 # "->Press 2 To List available Databases") echo "Second Option"
 exit;;
 3)  echo "Third Option"
