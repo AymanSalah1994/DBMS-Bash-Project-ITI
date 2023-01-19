@@ -9,12 +9,14 @@ case $REPLY in
 ./2.1.CreateDB.sh
 # "->Press 1 To Create a Database") echo "First Option"
 # 1) echo "First Option"
-# NOTE: Both Above will Work But in Case Use $option and In select also Make it Option
+# We Can use a Number or a String literal As in the above , If we Use the string 
+# Literal then We can Rename the Variable something else if We want 
+# Instead of $REPLY 
 # [x] Or you Can use the $REPLY standard and Use Numbers 
 exit;;
 2) echo "Second Option"
 # echo `./2.2.ListDatabases.sh`
-# If i make it Echo and backTich it makes a Problem 
+# If i make it Echo and backTick it makes a Problem In printing New Lines in other Files 
 ./2.2.ListDatabases.sh
 # "->Press 2 To List available Databases") echo "Second Option"
 exit;;
