@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Ask For a Dabases to Drop 
-# Search For it 
-#  If exists , Delete and Update Databases File 
-#  Else , List All Available Databases 
-# 
-
-
-
 read  -p "TO DROP : Enter the Name of the DataBase ->" databaseName
 if [[ $databaseName =~ ^[a-zA-Z0-9_]+$ ]] 
         then
