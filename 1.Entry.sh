@@ -21,6 +21,7 @@ exit;;
 # "->Press 2 To List available Databases") echo "Second Option"
 exit;;
 3)  echo "Third Option"
+./2.4.ConnectDatabase.sh
 # "->Press 3 To Connect to a Database"
 exit;;
 4) echo "Fourth Option"
