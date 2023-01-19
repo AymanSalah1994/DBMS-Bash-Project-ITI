@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# myField=4
+# awk -F: -v myField=4 '{ print $myField }' testAWK
+# # awk -v c1=$MY_COL1 -v c2=$MY_COL2 '{printf "%s\t%s\n", $c1, $c2}' < data_file.txt
+# #!/bin/bash
+
+# name=""
+# if test -z $name 
+# then 
+# echo "Zero"
+# fi
+first="toto"
+second="naboto"
+touch "$first$second"
