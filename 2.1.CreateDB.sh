@@ -1,5 +1,4 @@
 #!/bin/bash
-# Also Connet Him to the DB Directly 
 
 read  -p "Enter the Name of the DataBase You want to Create ->" databaseName
 if [[ $databaseName =~ ^[a-zA-Z0-9_]+$ ]] 
@@ -13,7 +12,8 @@ if [[ $databaseName =~ ^[a-zA-Z0-9_]+$ ]]
         else
 			mkdir $databaseName
 			echo "DataBase is Created" ;
-			notify-send  --icon=$PWD/check.png  $databaseName created 
+			notify-send  --icon=$PWD/check.png  $databaseName created
+			# $man notify-send 
 			# TODO connect to the New DB Directly 
 		fi
 else 

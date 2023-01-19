@@ -24,6 +24,7 @@ exit;;
 # "->Press 3 To Connect to a Database"
 exit;;
 4) echo "Fourth Option"
+./2.3.DropDatabase.sh
 # "->Press 4 To Drop a Database"
 exit;;
 *) echo "$REPLY is not Valid ! Only 1,2,3"
