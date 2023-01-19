@@ -14,6 +14,7 @@ if [[ $databaseName =~ ^[a-zA-Z0-9_]+$ ]]
             if [[ -d $databaseName ]] 
                 then
             rm -r $databaseName
+            ls -F  | grep "/" > DataBases
             notify-send  --icon=$PWD/check.png  $databaseName DELETED 
             else
                 notify-send  --icon=$PWD/cancel.png  NOT FOUND 
