@@ -12,10 +12,12 @@ if [[ $databaseName =~ ^[a-zA-Z0-9_]+$ ]]
 		echo "The Database Exists , Please Choose another Name " ; 
         else
 			mkdir $databaseName
-			echo "DataBase is Created" ; 
+			echo "DataBase is Created" ;
+			notify-send  --icon=$PWD/check.png  $databaseName created 
 			# TODO connect to the New DB Directly 
 		fi
 else 
 echo "Not Valid Name , only Letters , numbers and Underscores" ;
+notify-send  --icon=$PWD/cancel.png  ERROR
 fi 
 
