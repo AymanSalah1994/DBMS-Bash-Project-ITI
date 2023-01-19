@@ -1,17 +1,20 @@
 #!/usr/bin/bash
 
 # NOTE: Since a Database = Directory ,,, Any Directory Means a DB ! 
-echo `clear`
-echo `ls -F  | grep "/" > dbnames` 
-echo `wc -l dbnames` 
+# We will Not make any other Directory for anything else inside the project folder
+clear
+ls -F  | grep "/" > DataBases
+wc -l DataBases
 # echo `awk '{print($0)}' newLine` ; 
-echo `sed "p" newLine` 
-echo "*---------Databases with Their Tables-------------*" 
+
 echo "*---------Databases with Their Tables-------------*"
-for eachTable in `cat dbnames`
+for eachDB in `cat DataBases`
 do
-echo
-echo $eachTable 
-ls $eachTable
+echo "Database Name: "
+echo $eachDB 
+echo "Tables : "
+ls $eachDB
 echo "====End Of DataBase===="
 done
+# TODO Enter Ok to contiune Or q To Quit
+

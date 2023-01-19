@@ -12,7 +12,9 @@ case $REPLY in
 # [x] Or you Can use the $REPLY standard and Use Numbers 
 exit;;
 2) echo "Second Option"
-echo `./2.2.ListDatabases.sh`
+# echo `./2.2.ListDatabases.sh`
+# If i make it Echo and backTich it makes a Problem 
+././2.2.ListDatabases.sh
 # "->Press 2 To List available Databases") echo "Second Option"
 exit;;
 3)  echo "Third Option"
