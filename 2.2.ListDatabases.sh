@@ -5,7 +5,6 @@
 clear
 ls -F  | grep "/" > DataBases
 wc -l DataBases
-# echo `awk '{print($0)}' newLine` ; 
 
 echo  "     *---------Databases with Their Tables-------------*   "  
 for eachDB in `cat DataBases`
@@ -17,4 +16,3 @@ ls $eachDB
 echo "          ====End Of DataBase====         "
 done
 # TODO Enter Ok to contiune Or q To Quit
-

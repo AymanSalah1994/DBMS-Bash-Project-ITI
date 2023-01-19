@@ -1,5 +1,6 @@
 #!/bin/bash
-
+echo "Counting DataBases : "
+wc -l DataBases 
 read  -p "TO DROP : Enter the Name of the DataBase ->" databaseName
 if [[ $databaseName =~ ^[a-zA-Z0-9_]+$ ]] 
         then
@@ -21,4 +22,3 @@ notify-send  --icon=$PWD/cancel.png  ERROR
 ./2.3.DropDatabase.sh
 # Call itself again 
 fi 
-
