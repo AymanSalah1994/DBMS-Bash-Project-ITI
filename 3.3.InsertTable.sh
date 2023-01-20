@@ -4,16 +4,58 @@
 function promptForValue 
 # index
 {
+    while true 
+    do
     read -p "Enter the Value of ${ArrayOfColNames[$1]} ->$ " valueToInsert
     echo ${ArrayOfTypes[$1]}
+    # [x] ORDER HERE IS VERY IMPORTANT !!!!
+    if [ "$1" -eq 0 ]
+    then 
+    echo "yes it is zero"
+        for eachIdValue in `cat IdTemporaryFile`
+            do 
+            echo "$eachIdValue , $valueToInsert"
+                if [ $eachIdValue = $valueToInsert ] 
+                then 
+                echo "ID must Be Unique"
+                continue 2
+                # NOTE
+                fi
+            done
+            if test ${ArrayOfTypes[$1]} = "int" 
+                then 
+                    if [[ $valueToInsert =~ ^[0-9]+$ ]]
+                    then
+                    echo
+                    else 
+                    echo "NOT valid Data Type "
+                    continue
+                    fi
+            fi
+
+            if test ${ArrayOfTypes[$1]} = "str" 
+            then 
+                if [[ $valueToInsert =~ ^[a-zA-Z]+$ ]] 
+                # WHY in Function Here all work with Test only ?
+                then
+                echo
+                else 
+                echo "NOT valid Data Type "
+                continue
+                fi
+            fi
+
+    else 
+    # Else if NOT ZERO 
     if test ${ArrayOfTypes[$1]} = "int" 
         then 
             if [[ $valueToInsert =~ ^[0-9]+$ ]]
             then
             insertedValues[$1]=$valueToInsert
+            break
             else 
             echo "NOT valid Data Type "
-           return
+            continue
             fi
     fi
 
@@ -23,25 +65,19 @@ function promptForValue
         # WHY in Function Here all work with Test only ?
         then
         insertedValues[$1]=$valueToInsert
+        break
         else 
         echo "NOT valid Data Type "
-       return
+        continue
         fi
     fi
 
-    if test $1 -eq 0 
-    then 
-        for eachIdValue in `cat IdTemporaryFile`
-            do 
-                if [ $eachIdValue = $valueToInsert ] 
-                then 
-                echo "ID must Be Unique"
-                return
-                break
-                fi
-            done 
     fi
+
     insertedValues[$1]=$valueToInsert 
+    break
+    done
+    
 }
 
 

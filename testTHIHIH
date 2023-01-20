@@ -1,0 +1,10 @@
+#!/bin/bash
+function promptForValue 
+# index
+{
+    if [ "$1" -eq 0 ]
+    then 
+    echo "yes zero"
+    fi 
+}
+promptForValue 1
