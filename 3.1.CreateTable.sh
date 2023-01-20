@@ -31,24 +31,21 @@ function collectAllData
                     if test -z $PK 
                     # IF it is set , we will Not ask again
                         then 
-                        echo "Is it the PRIMARY KEY?"
-                                read -p "Write 1 For YES ~$ " option
-                                case $option in
-                                    1) echo "String"
-                                    PK=$columnName
-                                    ArrOfColNames[$index]=${ArrOfColNames[0]}
-                                    ArrOfColNames[0]=$columnName
-
-                                    temp=${ArrOfTypes[$index]}
-                                    ArrOfTypes[$index]=${ArrOfTypes[0]}
-                                    ArrOfTypes[0]=$temp
-
-
-                                    # NOTE: above  lines ensure always pk is 0 index
-                                    # Dollar Sign Means Value , without it 
-                                    # we Mean a Variable 
-                                    ;;
-                                esac
+                    echo "Is it the PRIMARY KEY?"
+                            read -p "Write 1 For YES ~$ " option
+                        case $option in
+                            1) echo "String"
+                            PK=$columnName
+                            ArrOfColNames[$index]=${ArrOfColNames[0]}
+                            ArrOfColNames[0]=$columnName
+                            temp=${ArrOfTypes[$index]}
+                            ArrOfTypes[$index]=${ArrOfTypes[0]}
+                            ArrOfTypes[0]=$temp
+                            # NOTE: above  lines ensure always pk is 0 index
+                            # Dollar Sign Means Value , without it 
+                            # we Mean a Variable 
+                            ;;
+                        esac
                         fi
                         # #####
                 else 
@@ -112,10 +109,8 @@ fi
 
 
 # SUDO CODE FOR CREATE TABLE 
-
 # Create Table is All About Creation of the Struture Like any other DBMS 
 # Once It is Created , You Can insert and Update and Delete ...etc 
-
 # Ask For the Table Name 
 # you ask for the number of coulmns 
 # Make a loop for the Columns 
