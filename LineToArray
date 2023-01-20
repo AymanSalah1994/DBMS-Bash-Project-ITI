@@ -1,8 +1,0 @@
-#!/bin/bash
-# firstLine=`cat xyz`
-# ele=($firstLine)
-# echo ${ele[1]}
-
-# lengthArr=`wc xyz -w`
-# myLArr=($lengthArr)
-# echo ${myLArr[0]}

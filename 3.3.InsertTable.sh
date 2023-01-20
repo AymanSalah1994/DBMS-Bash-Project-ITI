@@ -118,9 +118,10 @@ if [ -f $tableToInsert ]
 fi
 
 # If Table File exist 
-echo ${insertedValues[*]}
+echo ${insertedValues[*]} >> "$tableToInsert"
+# TODO Delete ID temporary File 
 
-
+# echo ${ArrOfColNames[*]} > "+$tableName+colNames"
 
 
 # APPEND not OverWrite 
