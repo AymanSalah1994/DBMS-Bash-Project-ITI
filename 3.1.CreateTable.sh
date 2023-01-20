@@ -27,7 +27,6 @@ function collectAllData
                 if [[ $columnName =~ ^[a-zA-Z0-9_]+$ ]] 
                 then 
                     ArrOfColNames[$index]=$columnName
-
                     # For Primary Key We Can Use Many Ways 
                     if test -z $PK 
                     # IF it is set , we will Not ask again
@@ -37,6 +36,15 @@ function collectAllData
                                 case $option in
                                     1) echo "String"
                                     PK=$columnName
+                                    ArrOfColNames[$index]=${ArrOfColNames[0]}
+                                    ArrOfColNames[0]=$columnName
+
+                                    temp=${ArrOfTypes[$index]}
+                                    ArrOfTypes[$index]=${ArrOfTypes[0]}
+                                    ArrOfTypes[0]=$temp
+
+
+                                    # NOTE: above  lines ensure always pk is 0 index
                                     # Dollar Sign Means Value , without it 
                                     # we Mean a Variable 
                                     ;;
@@ -61,6 +69,7 @@ read  -p "Enter the Name of Table ->" tableName
 if [[ $tableName =~ ^[a-zA-Z0-9_]+$ ]] 
         then 
             echo "Valid" ; 
+            # TODO If table Exist then Break
             typeset -i numberOfColumns
             read  -p "Enter the Nubmer Of Columns For Table ->" numberOfColumns
                 if [[ $numberOfColumns -gt 0 ]]
@@ -74,7 +83,7 @@ if [[ $tableName =~ ^[a-zA-Z0-9_]+$ ]]
                 fi
 else 
 echo "Not Valid Name" ;
-./CreateTable.sh 
+./3.1.CreateTable.sh 
 fi 
 
 # echo ${ArrOfTypes[*]}
@@ -84,7 +93,7 @@ fi
 # TODO making a Check if PK is empty 
 
 
-
+# https://stackoverflow.com/questions/3685970/check-if-a-bash-array-contains-a-value
 
 
 if test -z $PK 
