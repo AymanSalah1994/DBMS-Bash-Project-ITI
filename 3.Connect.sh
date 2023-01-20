@@ -17,8 +17,9 @@ exit;;
 cd $databaseName
 ls [a-zA-Z9-0_]*
 exit;;
-3)  echo "3 Option"
-./2.4.ConnectDatabase.sh
+3)  echo "Drop Table"
+export databaseName
+./3.2.DropTable.sh
 exit;;
 4) echo "4 Option"
 ./2.3.DropDatabase.sh
