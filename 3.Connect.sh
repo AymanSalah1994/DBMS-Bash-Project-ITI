@@ -25,8 +25,8 @@ exit;;
 export databaseName
 ./3.3.InsertTable.sh
 exit;;
-5) echo "5 Option"
-./2.3.DropDatabase.sh
+5) echo "Select From Table"
+./3.4.SelectTable.sh
 exit;;
 6) echo "6 Option"
 ./2.3.DropDatabase.sh
