@@ -70,68 +70,12 @@ while true
             fi
         fi
 
+        
     done
 
 echo $indexOfCondition
 echo $valueOfCondition
 # Loop and delete if there is A match 
 # NOTE: From the ALL above you Can take them For Update
-
-
-
-# loop For int 
-# TODO one For str
-
-# Loop on the File 
-# Take each Line Into Array 
-# array Element @index == ConditionValue ? 
-# echo it 
-# Else append it In Temporary File 
-
-
-        if [ $theValueType = "int" ]
-        # If we Remove Spaces around = It is like assginment and Will always be true
-        then
-            while read line
-            do 
-            ArrayOfColValues2=($line)
-                if [ ${ArrayOfColValues2[$indexOfCondition]} -eq $valueOfCondition  ]
-                then 
-                    echo "DELETED : "
-                    echo $line
-                else 
-                    `echo $line >> temporayFileAfterDeletion`
-                fi
-            done < $tableToDelete
-            # after Loop Take all From temporay to Old File  Name 
-            # Delete Temporary 
-            `cat temporayFileAfterDeletion > $tableToDelete`
-            `rm temporayFileAfterDeletion `
-                fi
-
-
-        if [ $theValueType = "str" ] 
-        then 
-            while read line
-            do 
-            ArrayOfColValues2=($line)
-                if [ ${ArrayOfColValues2[$indexOfCondition]} = $valueOfCondition  ]
-                then 
-                    echo "DELETED : "
-                    echo $line
-                else 
-                    `echo $line >> temporayFileAfterDeletion`
-                fi
-            done < $tableToDelete
-            # after Loop Take all From temporay to Old File  Name 
-            # Delete Temporary 
-            `cat temporayFileAfterDeletion > $tableToDelete`
-            `rm temporayFileAfterDeletion `
-        fi
-
-
-
-
-
 
 
