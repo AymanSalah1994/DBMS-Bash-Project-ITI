@@ -29,8 +29,9 @@ exit;;
 export databaseName
 ./3.4.SelectTable.sh
 exit;;
-6) echo "6 Option"
-./2.3.DropDatabase.sh
+6) echo "Delete From Table"
+export databaseName
+3.5.DeletefromTable.sh
 # TODO Delete
 exit;;
 7) echo "7 Option"
