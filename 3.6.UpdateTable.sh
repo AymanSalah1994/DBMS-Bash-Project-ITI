@@ -139,18 +139,11 @@ echo $valueOfUpdate
 # loop For int 
 # TODO one For str
 
-# Loop on the File 
-# Take each Line Into Array 
-# array Element @index == ConditionValue ? 
-# echo it 
-# Else append it In Temporary File 
-
-
-
 
 # --> 
 # The loops [ Which are For Deletion Till Now Untill We edit it ]
         if [ $theValueType = "int" ]
+        # Type Because Either -eq OR = 
         # If we Remove Spaces around = It is like assginment and Will always be true
         then
             while read line
@@ -158,16 +151,18 @@ echo $valueOfUpdate
             ArrayOfColValues2=($line)
                 if [ ${ArrayOfColValues2[$indexOfCondition]} -eq $valueOfCondition  ]
                 then 
-                    echo "DELETED : "
-                    echo $line
+                    echo "UPDATED : "
+                    ArrayOfColValues2[$indexOfUpdate]=$valueOfUpdate
+                    `echo ${ArrayOfColValues2[*]} >> temporayFileAfterUpdate`
+                    echo ${ArrayOfColValues2[*]}
                 else 
-                    `echo $line >> temporayFileAfterDeletion`
+                    `echo $line >> temporayFileAfterUpdate`
                 fi
             done < $tableToUpdate
             # after Loop Take all From temporay to Old File  Name 
             # Delete Temporary 
-            `cat temporayFileAfterDeletion > $tableToUpdate`
-            `rm temporayFileAfterDeletion `
+            `cat temporayFileAfterUpdate > $tableToUpdate`
+            `rm temporayFileAfterUpdate `
         fi
 
 
@@ -178,14 +173,16 @@ echo $valueOfUpdate
             ArrayOfColValues2=($line)
                 if [ ${ArrayOfColValues2[$indexOfCondition]} = $valueOfCondition  ]
                 then 
-                    echo "DELETED : "
-                    echo $line
+                    echo "UPDATED : "
+                    ArrayOfColValues2[$indexOfUpdate]=$valueOfUpdate
+                    `echo ${ArrayOfColValues2[*]} >> temporayFileAfterUpdate`
+                    echo ${ArrayOfColValues2[*]}
                 else 
-                    `echo $line >> temporayFileAfterDeletion`
+                    `echo $line >> temporayFileAfterUpdate`
                 fi
             done < $tableToUpdate
             # after Loop Take all From temporay to Old File  Name 
             # Delete Temporary 
-            `cat temporayFileAfterDeletion > $tableToUpdate`
-            `rm temporayFileAfterDeletion `
+            `cat temporayFileAfterUpdate > $tableToUpdate`
+            `rm temporayFileAfterUpdate `
         fi
