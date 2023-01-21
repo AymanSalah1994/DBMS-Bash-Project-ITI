@@ -32,14 +32,34 @@ while true
             break  # This Means Number is Valid 
         fi
     done
-((indexOfCondition = indexOfCondition -1 )) # To get REAL index 
-theValueType=${ArrayOfTypes[$indexOfCondition]} # Str or Int 
+ # To get REAL index 
 
+
+let indexOfCondition=indexOfCondition-1
+theValueType=${ArrayOfTypes[$indexOfCondition]} # Str or Int 
+echo "The Value Type For selection"
+echo $theValueType
+echo "The Final Index "
+echo $indexOfCondition
 while true
     do
         read -p "Enter the Value of Column Test Against ->" valueOfCondition
         # 1 >> 0 For the ID as an Example 
-        if [ $theValueType="str" ] 
+
+        if [ $theValueType = "int" ]
+        # If we Remove Spaces around = It is like assginment and Will always be true
+        then
+            if [[ $valueOfCondition =~ ^[0-9]+$ ]] 
+            then 
+            break
+            else  
+            echo " Not a Valid Type INT"
+            continue
+            fi
+        fi
+
+
+        if [ $theValueType = "str" ] 
         then 
             if [[ $valueOfCondition =~ ^[a-zA-Z]+$ ]] 
             then 
@@ -50,17 +70,9 @@ while true
             fi
         fi
 
-        if [ $theValueType="int" ]
-        then
-            if [[ $valueOfCondition =~ ^[0-9]+$ ]] 
-            then 
-            break
-            else  
-            echo " Not a Valid Type INT"
-            continue
-            fi
-        fi
+        
     done
 
 echo $indexOfCondition
 echo $valueOfCondition
+# Loop and delete if there is A match 
