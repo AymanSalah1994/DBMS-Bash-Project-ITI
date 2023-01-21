@@ -26,8 +26,6 @@ echo "ALL Columns will be Selected "
     done < $tableToSelect
 fi 
 
-
-
 if [ $noOfColumns -lt $totalColumns  ]
 then 
     echo "SOME Columns will be Selected "
@@ -60,7 +58,11 @@ then
     while read line
     do 
     ArrayOfColValues=($line)
-            echo ${ArrayOfColValues[1]} 
+            for i in ${Arr[*]}
+            do 
+            echo -en  ${ArrayOfColValues[i]} '\t'
+            done
+    echo
     done < $tableToSelect
 
 fi 
