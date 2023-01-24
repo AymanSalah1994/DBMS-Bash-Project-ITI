@@ -39,10 +39,6 @@ while true
  # To get REAL index 
 let indexOfCondition=indexOfCondition-1
 theValueType=${ArrayOfTypes[$indexOfCondition]} # Str or Int 
-echo "The Value Type For selection"
-echo $theValueType
-echo "The Final Index "
-echo $indexOfCondition
 while true
     do
         read -p "Enter the Value of Column Test Against ->" valueOfCondition
