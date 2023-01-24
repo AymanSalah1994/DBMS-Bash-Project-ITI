@@ -45,15 +45,13 @@ exit;;
 exit;;
 
 
-6) echo "Delete From Table"
-3.5.DeletefromTable.sh
-# TODO Delete
+6) 
+./3.5.DeletefromTable.sh
 exit;;
 
 
-7) echo "Update n"
+7) 
 ./3.6.UpdateTable.sh
-# TODO Update
 exit;;
 
 

@@ -1,29 +1,32 @@
 #!/bin/bash
 
 read -p "Enter the Table you Want to DELETE From ->" tableToDelete
-# TODO chck Table Exist 
-databaseName="DB_1"
+
 cd $databaseName
-lengthStringToArray=`wc +$tableToDelete+colNames -w`
-totalColumns=($lengthStringToArray) # Total nubmer of Columns 
-namesLine=`cat +$tableToDelete+colNames`
-ArrayOfColNames=($namesLine)  # Columns Names to Show to the User 
-echo  "Available Columns: $namesLine"
-typesLine=`cat +$tableToDelete+types`
-ArrayOfTypes=($typesLine) 
+if [[ -f $tableToDelete ]]
+then 
+    lengthStringToArray=`wc +$tableToDelete+colNames -w`
+    totalColumns=($lengthStringToArray) # Total nubmer of Columns 
+    namesLine=`cat +$tableToDelete+colNames`
+    ArrayOfColNames=($namesLine)  # Columns Names to Show to the User 
+    echo  "Available Columns: $namesLine"
+    typesLine=`cat +$tableToDelete+types`
+    ArrayOfTypes=($typesLine) 
+else 
+    cd ..
+    notify-send  --icon=$PWD/cancel.png  "No Such a Table !"
+    ./3.Connect.sh 
+fi
 
-
-typeset -i indexOfCondition
+# typeset -i indexOfCondition
 while true
     do
         read -p "Enter the Index of Column You Choose as a Condition ->" indexOfCondition
-        # 1 >> 0 For the ID as an Example 
-        if [[ $userInput =~ ^[a-zA-Z]+$ ]] 
+        if [[ $indexOfCondition =~ ^[a-zA-Z]+$ ]] 
         then 
             echo "Numbers Only"
             continue
         fi
-
         if [ $indexOfCondition -lt 1 -o  $indexOfCondition -gt $totalColumns ]
         then
             echo "Invalid Index"
@@ -32,9 +35,8 @@ while true
             break  # This Means Number is Valid 
         fi
     done
+
  # To get REAL index 
-
-
 let indexOfCondition=indexOfCondition-1
 theValueType=${ArrayOfTypes[$indexOfCondition]} # Str or Int 
 echo "The Value Type For selection"
@@ -44,10 +46,7 @@ echo $indexOfCondition
 while true
     do
         read -p "Enter the Value of Column Test Against ->" valueOfCondition
-        # 1 >> 0 For the ID as an Example 
-
         if [ $theValueType = "int" ]
-        # If we Remove Spaces around = It is like assginment and Will always be true
         then
             if [[ $valueOfCondition =~ ^[0-9]+$ ]] 
             then 
@@ -57,7 +56,6 @@ while true
             continue
             fi
         fi
-
 
         if [ $theValueType = "str" ] 
         then 
@@ -69,28 +67,12 @@ while true
             continue
             fi
         fi
-
     done
 
 echo $indexOfCondition
 echo $valueOfCondition
-# Loop and delete if there is A match 
-# NOTE: From the ALL above you Can take them For Update
-
-
-
-# loop For int 
-# TODO one For str
-
-# Loop on the File 
-# Take each Line Into Array 
-# array Element @index == ConditionValue ? 
-# echo it 
-# Else append it In Temporary File 
-
 
         if [ $theValueType = "int" ]
-        # If we Remove Spaces around = It is like assginment and Will always be true
         then
             while read line
             do 
@@ -103,12 +85,11 @@ echo $valueOfCondition
                     `echo $line >> temporayFileAfterDeletion`
                 fi
             done < $tableToDelete
-            # after Loop Take all From temporay to Old File  Name 
-            # Delete Temporary 
             `cat temporayFileAfterDeletion > $tableToDelete`
             `rm temporayFileAfterDeletion `
-                fi
-
+            cd .. 
+            ./3.Connect.sh
+            fi
 
         if [ $theValueType = "str" ] 
         then 
@@ -123,15 +104,8 @@ echo $valueOfCondition
                     `echo $line >> temporayFileAfterDeletion`
                 fi
             done < $tableToDelete
-            # after Loop Take all From temporay to Old File  Name 
-            # Delete Temporary 
             `cat temporayFileAfterDeletion > $tableToDelete`
-            `rm temporayFileAfterDeletion `
+            `rm temporayFileAfterDeletion`
+            cd .. 
+            ./3.Connect.sh
         fi
-
-
-
-
-
-
-
