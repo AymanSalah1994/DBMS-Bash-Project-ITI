@@ -10,9 +10,10 @@ cd $databaseName
             rm "+$tableToDrop+colNames"
             cd .. 
             notify-send  --icon=$PWD/check.png   Table-DROPPED  
-            # TODO Export DB Name and Get back to the Connect Menu again  
+            ./3.Connect.sh
         else
             echo "ERROR , table Not Found"
             cd .. 
 			notify-send  --icon=$PWD/cancel.png  Not-Found
+            ./3.Connect.sh
 	fi

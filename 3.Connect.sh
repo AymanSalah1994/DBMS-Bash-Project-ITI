@@ -35,15 +35,18 @@ exit;;
 ./3.2.DropTable.sh
 exit;;
 
+
 4) echo "Insert into Table"
 # export databaseName
 ./3.3.InsertTable.sh
 exit;;
 
+
 5) echo "Select From Table"
 # export databaseName
 ./3.4.SelectTable.sh
 exit;;
+
 
 6) echo "Delete From Table"
 # export databaseName
@@ -51,10 +54,12 @@ exit;;
 # TODO Delete
 exit;;
 
+
 7) echo "7 Option"
 ./2.3.DropDatabase.sh
 # TODO Update
 exit;;
+
 
 *) echo "$REPLY is not Valid ! Only 1,2,3,4,5,6,7"
 ;;
