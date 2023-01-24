@@ -66,7 +66,6 @@ while true
         fi
     done
 
-
 # typeset -i indexOfUpdate
 while true
     do
@@ -113,7 +112,6 @@ while true
             fi
         fi
     done
-
 
     if [ $theValueType = "int" ]
         then
