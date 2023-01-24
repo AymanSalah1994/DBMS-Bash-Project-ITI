@@ -1,5 +1,4 @@
 #!/bin/bash
-
 function collectAllData
 {
     typeset -i counter
@@ -69,12 +68,10 @@ if [[ $tableName =~ ^[a-zA-Z0-9_]+$ ]]
                 echo "Not a Valid Number , Try again , Enter Number greater than 0"
                 ./3.1.CreateTable.sh 
                 fi
-else 
+else
 echo "Not Valid Name" ;
 ./3.1.CreateTable.sh 
-fi 
-
-
+fi
 
 if test -z $PK 
     then 

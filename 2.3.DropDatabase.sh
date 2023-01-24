@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Counting DataBases : "
+echo "Counting DataBases : " 
 wc -l DataBases 
 read  -p "TO DROP : Enter the Name of the DataBase ->" databaseName
 if [[ -d $databaseName ]] 

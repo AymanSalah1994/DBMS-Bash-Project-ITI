@@ -3,7 +3,6 @@
 clear
 ls -F  | grep "/" > DataBases
 wc -l DataBases
-
 echo  "     *---------Databases with Their Tables-------------*   "  
 for eachDB in `cat DataBases`
 do

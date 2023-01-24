@@ -7,7 +7,7 @@ if [[ $databaseName =~ ^[a-zA-Z0-9_]+$ ]]
 			then
 		notify-send  --icon=$PWD/cancel.png  "ERROR The Database Exists  , Please Choose another Name"
 		./2.1.CreateDB.sh
-			else
+			else 
 				mkdir $databaseName
 				echo "DataBase is Created" ;
 				notify-send  --icon=$PWD/check.png  $databaseName created

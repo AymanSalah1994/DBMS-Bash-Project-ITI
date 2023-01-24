@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "Counting DataBases : "
 wc -l DataBases 
 read  -p "TO CONNECT : Enter the Name of the DataBase ->" databaseName

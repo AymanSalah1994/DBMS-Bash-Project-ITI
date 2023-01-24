@@ -1,9 +1,6 @@
 #!/bin/bash
 
 read -p "Enter the Table you Want to UPDATE ON ->" tableToUpdate
-# TODO chck Table Exist 
-
-databaseName="DB_1"
 cd $databaseName
 lengthStringToArray=`wc +$tableToUpdate+colNames -w`
 totalColumns=($lengthStringToArray) # Total nubmer of Columns 

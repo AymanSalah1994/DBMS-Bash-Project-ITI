@@ -1,5 +1,4 @@
 #!/bin/bash
-
 read -p "Enter the Name of the Table you Want to Drop ->$ " tableToDrop
 cd $databaseName
     if [[ -f $tableToDrop ]] 

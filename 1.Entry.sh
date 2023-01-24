@@ -7,19 +7,15 @@ case $REPLY in
 1) 
 ./2.1.CreateDB.sh
 exit;;
-
 2)
 ./2.2.ListDatabases.sh
 exit;;
-
 3) 
 ./2.4.ConnectDatabase.sh
 exit;;
-
 4) 
 ./2.3.DropDatabase.sh
 exit;;
-
 *) echo "$REPLY is not Valid ! Only 1,2,3,4 Are allowed !"
 ;;
 esac
