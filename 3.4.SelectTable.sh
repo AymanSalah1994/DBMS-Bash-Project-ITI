@@ -1,20 +1,27 @@
 #!/bin/bash
 
 read -p "Enter the Table you Want to Select From ->" tableToSelect
-databaseName="DB_1"
 cd $databaseName
-lengthStringToArray=`wc +$tableToSelect+colNames -w`
-totalColumns=($lengthStringToArray) # Total nubmer of Columns 
-namesLine=`cat +$tableToSelect+colNames`
-ArrayOfColNames=($namesLine)  # Columns Names to Show to the User 
-echo  "Available Columns: $namesLine"
+if [[ -f $tableToSelect ]]
+then 
+    lengthStringToArray=`wc +$tableToSelect+colNames -w`
+    totalColumns=($lengthStringToArray) # Total nubmer of Columns 
+    namesLine=`cat +$tableToSelect+colNames`
+    ArrayOfColNames=($namesLine)  # Columns Names to Show to the User 
+    echo  "Available Columns: $namesLine"
+else 
+    cd ..
+    notify-send  --icon=$PWD/cancel.png  "No Such a Table !"
+    ./3.Connect.sh 
+fi
+
 read -p "Enter the Nubmer of Columns you Want to Select ->" noOfColumns 
 
 if [ $noOfColumns -lt 1 -o  $noOfColumns -gt $totalColumns ]
 then 
-echo "Invalid Number"
 cd .. 
-./2.4.ConnectDatabase.sh
+notify-send  --icon=$PWD/cancel.png  "Invalid Number"
+./3.Connect.sh
 fi 
 
 if [ $noOfColumns -eq $totalColumns ]
@@ -24,6 +31,13 @@ echo "ALL Columns will be Selected "
     do 
     echo $line
     done < $tableToSelect
+    read -p "Press Enter To Continue : " option
+    case $REPLY in
+        *) 
+        cd .. 
+        ./3.Connect.sh
+        ;;
+    esac
 fi 
 
 if [ $noOfColumns -lt $totalColumns  ]
@@ -56,15 +70,19 @@ then
     done
 
     while read line
-    do 
+    do
     ArrayOfColValues=($line)
             for i in ${Arr[*]}
-            do 
+            do
             echo -en  ${ArrayOfColValues[i]} '\t'
             done
     echo
     done < $tableToSelect
-
+    read -p "Press Enter To Continue : " option
+    case $REPLY in
+        *) 
+        cd .. 
+        ./3.Connect.sh
+        ;;
+    esac
 fi 
-
-

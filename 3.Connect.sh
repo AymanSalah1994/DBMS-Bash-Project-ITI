@@ -40,7 +40,7 @@ exit;;
 exit;;
 
 
-5) echo "Select From Table"
+5)  
 ./3.4.SelectTable.sh
 exit;;
 
