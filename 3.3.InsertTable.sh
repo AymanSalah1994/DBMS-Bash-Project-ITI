@@ -1,25 +1,19 @@
 #!/bin/bash
 
-
 function promptForValue 
-# index
+# Takes Index 
 {
     while true 
     do
     read -p "Enter the Value of ${ArrayOfColNames[$1]} ->$ " valueToInsert
-    echo ${ArrayOfTypes[$1]}
-    # [x] ORDER HERE IS VERY IMPORTANT !!!!
     if [ "$1" -eq 0 ]
     then 
-    echo "yes it is zero"
         for eachIdValue in `cat IdTemporaryFile`
             do 
-            echo "$eachIdValue , $valueToInsert"
                 if [ $eachIdValue = $valueToInsert ] 
                 then 
                 echo "ID must Be Unique"
                 continue 2
-                # NOTE
                 fi
             done
             if test ${ArrayOfTypes[$1]} = "int" 
@@ -36,7 +30,6 @@ function promptForValue
             if test ${ArrayOfTypes[$1]} = "str" 
             then 
                 if [[ $valueToInsert =~ ^[a-zA-Z]+$ ]] 
-                # WHY in Function Here all work with Test only ?
                 then
                 echo
                 else 
@@ -62,7 +55,6 @@ function promptForValue
     if test ${ArrayOfTypes[$1]} = "str" 
     then 
         if [[ $valueToInsert =~ ^[a-zA-Z]+$ ]] 
-        # WHY in Function Here all work with Test only ?
         then
         insertedValues[$1]=$valueToInsert
         break
@@ -71,8 +63,7 @@ function promptForValue
         continue
         fi
     fi
-
-    fi
+fi
 
     insertedValues[$1]=$valueToInsert 
     break
@@ -102,47 +93,23 @@ if [ -f $tableToInsert ]
         # Now Lets Start the Loop Of Insertion
         index=0
         echo "All Cols $numberOfColumns"
+        echo $namesLine
         while test $index -lt $numberOfColumns 
         # Start While 
         do
-        # echo $index
-        # echo ${ArrayOfTypes[$index]}
-        # echo ${ArrayOfColNames[$index]}
         promptForValue $index
         let index=$index+1
         done
         # Done End of While 
         # End of the Loop Of Insertion
+
+        echo ${insertedValues[*]} >> "$tableToInsert"
+        rm IdTemporaryFile
+        cd ..
+        notify-send  --icon=$PWD/check.png  $databaseName "Data Inserted"
+        ./3.Connect.sh
     else 
-    echo "There is No table with this Name ! ERROR"
+    cd ..
+    notify-send  --icon=$PWD/cancel.png  $databaseName "There is No table with this Name ! ERROR"
+    ./3.Connect.sh
 fi
-
-# If Table File exist 
-echo ${insertedValues[*]} >> "$tableToInsert"
-# TODO Delete ID temporary File 
-
-# echo ${ArrOfColNames[*]} > "+$tableName+colNames"
-
-
-# APPEND not OverWrite 
-# read -p "Enter Value Of ${ArrayOfColNames[$index]}->$ " insertValue
-        # if [$index -eq 0]
-        # then 
-        # # Start Of the Loop For IDs
-        # for eachIdValue in cat IdTemporaryFile
-        #     do 
-        #         if [$eachIdValue=$insertValue]
-        #         then 
-        #         echo "ID must Be Unique"
-        #         break
-        #         fi
-        #     done 
-        #     # Done Above is for for Loop
-        # valuesArray[$index]=insertValue
-        # let index=$index+1
-
-        # else 
-        # # Else if index is Not 0 
-
-
-        # fi # End Of If index = 0 

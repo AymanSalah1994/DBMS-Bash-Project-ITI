@@ -30,33 +30,29 @@ case $REPLY in
 exit;;
 
 
-3)  echo "Drop Table"
-# export databaseName
+3)
 ./3.2.DropTable.sh
 exit;;
 
 
-4) echo "Insert into Table"
-# export databaseName
+4)
 ./3.3.InsertTable.sh
 exit;;
 
 
 5) echo "Select From Table"
-# export databaseName
 ./3.4.SelectTable.sh
 exit;;
 
 
 6) echo "Delete From Table"
-# export databaseName
 3.5.DeletefromTable.sh
 # TODO Delete
 exit;;
 
 
-7) echo "7 Option"
-./2.3.DropDatabase.sh
+7) echo "Update n"
+./3.6.UpdateTable.sh
 # TODO Update
 exit;;
 
