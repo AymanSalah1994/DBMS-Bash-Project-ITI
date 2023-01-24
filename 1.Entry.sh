@@ -16,7 +16,7 @@ exit;;
 ./2.4.ConnectDatabase.sh
 exit;;
 
-4) echo "Fourth Option"
+4) 
 ./2.3.DropDatabase.sh
 exit;;
 
