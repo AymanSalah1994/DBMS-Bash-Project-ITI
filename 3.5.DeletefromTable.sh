@@ -1,7 +1,6 @@
 #!/bin/bash
 
 read -p "Enter the Table you Want to DELETE From ->" tableToDelete
-
 cd $databaseName
 if [[ -f $tableToDelete ]]
 then 
